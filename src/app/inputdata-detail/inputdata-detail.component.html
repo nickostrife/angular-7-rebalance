@@ -1,0 +1,160 @@
+<!-- <p>
+  inputdata-detail works!
+</p> -->
+<div>
+<h3>You selected detail with id = {{detailId}}</h3>
+</div>
+<!-- TEST Create Detail -->
+<div class="form-group">
+  <h3>You submitted the following:</h3>
+<!-- <div *ngFor='let inputData of inputDatas$'> -->
+  <div class="row">
+    <div class="col-xs-3">Starting Amount</div>
+    <div class="col-xs-9">{{ inputDatas$.startAmount | number }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Stock Ratio</div>
+    <div class="col-xs-9">{{ inputDatas$.stockRatio }}%</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Cash Ratio</div>
+    <div class="col-xs-9">{{ inputDatas$.cashRatio }}%</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Duration Year(s)</div>
+    <div class="col-xs-9">{{ inputDatas$.durationYear }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Stock Return</div>
+    <div class="col-xs-9">{{ inputDatas$.stockReturn }}%</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Cash Return</div>
+    <div class="col-xs-9">{{ inputDatas$.cashReturn }}%</div>
+  </div>
+  <!-- </div> -->
+  <br>
+  <!-- <button class="btn btn-primary" (click)="submitted=false">Back</button> -->
+</div>
+
+<!-- TEST Creating table -->
+<table class="simple-table">
+    <tr>
+      <th rowspan="2">Month</th>
+      <th colspan="3">Begin</th>
+      <th colspan="3">Transaction</th>
+      <th colspan="3">Balance</th>
+      <th colspan="2">Rebalance</th>
+      <th colspan="3">Total</th>
+      <!-- <th>Begin Stock</th>
+      <th>Begin Cash</th>
+      <th>Begin Total</th>
+      <th>Trans. Stock</th>
+      <th>Trans. Cash</th>
+      <th>Trans. Total</th>
+      <th>Rebal. Stock</th>
+      <th>Rebal. Cash</th>
+      <th>Ending Stock</th>
+      <th>Ending Cash</th>
+      <th>Ending Total</th> -->
+    </tr>
+    <tr>
+        <th>Begin Stock</th>
+        <th>Begin Cash</th>
+        <th>Begin Total</th>
+        <th>Trans. Stock</th>
+        <th>Trans. Cash</th>
+        <th>Trans. Total</th>
+        <th>Bal. Stock</th>
+        <th>Bal. Cash</th>
+        <th>Bal. Total</th>
+        <th>Rebal. Stock</th>
+        <th>Rebal. Cash</th>
+        <th>Ending Stock</th>
+        <th>Ending Cash</th>
+        <th>Ending Total</th>
+    </tr>
+<tbody>
+    <tr *ngFor='let outputInfo of outputData'>
+      <td>
+        <b>{{ outputInfo.month }}</b>
+      </td>
+      <td>
+        {{ outputInfo.begStock | number }}
+      </td>
+      <td>
+        {{ outputInfo.begCash | number }}
+      </td>
+      <td>
+        {{ outputInfo.begTot | number }}
+      </td>
+      <td>
+        {{ outputInfo.traStock | number }}
+      </td>
+      <td>
+        {{ outputInfo.traCash | number }}
+      </td>
+      <td>
+        {{ outputInfo.traTot | number }}
+      </td>
+      <td>
+        {{ outputInfo.balStock | number }}
+      </td>
+      <td>
+        {{ outputInfo.balCash | number }}
+      </td>
+      <td>
+        {{ outputInfo.balTot | number }}
+      </td>
+      <td>
+        {{ outputInfo.rebStock | number }}
+      </td>
+      <td>
+        {{ outputInfo.rebCash | number }}
+      </td>
+      <td>
+        {{ outputInfo.endStock | number }}
+      </td>
+      <td>
+        {{ outputInfo.endCash | number }}
+      </td>
+      <td>
+        <b>{{ outputInfo.endAmount | number }}</b>
+      </td>
+    </tr>
+</tbody>
+</table>
+
+<!-- <div *ngFor='let outputInfo of outputData' style="text-align:left">
+  <ul>
+    <li>
+      <p>
+        <b>Month</b>: {{ outputInfo.month | number }} <br>
+        <br>
+        <b>Beginning</b> <br>
+        Beginning Stock: {{ outputInfo.begStock | number }}<br>
+        Beginning Cash: {{ outputInfo.begCash | number }}<br>
+        Beginning Total: {{ outputInfo.begTot | number }}<br>
+        <br>
+        <b>Transaction</b><br>
+        Transaction Stock: {{ outputInfo.traStock | number }}<br>
+        Transaction Cash: {{ outputInfo.traCash | number }}<br>
+        Transaction Total: {{ outputInfo.traTot | number }}<br>
+        <br>
+        <b>Balance</b><br>
+        Balance Stock: {{ outputInfo.balStock | number }}<br>
+        Balance Cash: {{ outputInfo.balCash | number }}<br>
+        Balance Total: {{ outputInfo.balTot | number }}<br>
+        <br>
+        <b>Rebalance</b><br>
+        Stock: {{ outputInfo.rebStock | number }}<br>
+        Cash: {{ outputInfo.rebCash | number }}<br>
+        <br>
+        <b>Ending</b> <br>
+        Stock Amount: {{ outputInfo.endStock | number }} <br>
+        Cash Amount: {{ outputInfo.endCash | number }} <br>
+        Total Ending Amount: {{ outputInfo. endAmount | number }} <br>
+      </p>
+    </li>
+  </ul>
+</div> -->
