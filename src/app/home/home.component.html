@@ -1,28 +1,27 @@
-<!-- <p>
-  home works!
-</p> -->
+<h1 style="text-align: center">Submitted Form List</h1>
 
-<h3 style="text-align:center">Submitted Form List</h3>
 <div style="text-align:center" *ngFor='let inputData of inputDatas$'>
-  <table class="simple-table" >
-    <tr>
-      <th>Form ID</th>
-      <th>Starting Amount</th>
-      <th>Duration Year(s)</th>
-      <th>Stock Ratio</th>
-      <th>Cash Ratio</th>
-      <th>Details</th>
-    </tr>
-    <tr>
-    <td>{{ inputData.id }}</td>
-    <td>{{ inputData.startAmount | number }}</td>
-    <td>{{ inputData.durationYear }}</td>
-    <td>{{ inputData.stockRatio }}%</td>
-    <td>{{ inputData.cashRatio }}%</td>
-    <td>
-    <button  type="submit" class = "btn btn-sm btn-primary" (click)="onSelect(inputData.id)">
-      <i class="fa fa-angle-right" aria-hidden="true"></i>  View More Details</button>
-    </td>
-    </tr>
-</table>
+  <mat-card class="simple-card">
+    <table class="simple-table" >
+      <tr>
+        <th>Form ID</th>
+        <th>Starting Amount</th>
+        <th>Duration Year(s)</th>
+        <th>Stock Ratio</th>
+        <th>Cash Ratio</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td>{{ inputData.id }}</td>
+        <td>{{ inputData.startAmount | number }}</td>
+        <td>{{ inputData.durationYear }}</td>
+        <td>{{ inputData.stockRatio }}%</td>
+        <td>{{ inputData.cashRatio }}%</td>
+        <td>
+          <button  type="submit" class = "btn btn-sm btn-primary" (click)="onSelect(inputData.id)">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>  View More Details</button>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
 </div>

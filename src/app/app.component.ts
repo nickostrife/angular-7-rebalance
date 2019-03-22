@@ -10,21 +10,9 @@ import { DataService } from './data.service';
 })
 export class AppComponent implements OnInit
 {
-  title = 'angular-spring-latest';
-
-  // calcs = [];
-
-  // myCalc = this.calcs[0];
-  
-  inputDatas$: InputData[];
+  title = 'Angular Rebalance';
 
   constructor(private dataService: DataService) { }
 
-  ngOnInit() {
-    return this.dataService.getInputData()
-    .subscribe(data => this.inputDatas$ = data);
-
-    // return this.dataService.getOutputInfo().subscribe(data => this.outputDatas$ = data);
-  }
-
+  ngOnInit() { }
 }

@@ -1,14 +1,10 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-
-//import { Calc } from '../Calc';
-import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
-
-import { InputData } from '../inputdata.model';
-import { OutputInfo } from '../outputinfo.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, Validators } from '@angular/forms';
+
+import { DataService } from '../data.service';
+import { InputData } from '../inputdata.model';
+import { OutputInfo } from '../outputinfo.model';
 
 @Component({
   selector: 'app-calc-form',
@@ -24,28 +20,22 @@ export class CalcFormComponent implements OnInit
     private router: Router,
     private httpClient: HttpClient) { }
 
+  // Duration Years Selection  
   durationYears = [1,2,3,4,5,6,7,8,9,10];
-  //model = new Calc(1000, 50, 50, 1, 10, 2);
-
   submitted = false;
 
   outputInfos$: OutputInfo[];
   outputInfoz: OutputInfo[];
 
-  //outputData = {};
-
   // FINAL
   outputData: any;
-
-
   inputDatas$: InputData[];
-
+  
+  // Default Data in calculator form page
   inputData= new InputData(1000000, 50, 50, 1, 10, 2);
-  
-  
-  // TEST
+    
+  // FINAL
   public detailId;
-  
   public fkeyId;
   
   calPercent(stockRatio) 
@@ -57,29 +47,20 @@ export class CalcFormComponent implements OnInit
   
   onSubmit()
   { 
-    this.dataService.postInputData(this.inputData).subscribe(
-      data => (this.outputData = data),
-      error => console.error('Error!', error)
-      //{
-        //this.fetchOutput();
-        //console.log(this.outputData);
-      //},)
+    this.dataService.postInputData(this.inputData)
+    .subscribe(data => (this.outputData = data),
+      error => console.error('Error!', error),
     )
-
+    console.log(this.outputData);
     this.submitted = true;
   }
 
-  newCalc() {
-    //this.model = new Calc(1000, 50, 50, 1, 10, 2);
+  newCalc()
+  {
     this.inputData = new InputData(1000000, 50, 50, 1, 10, 2);
   }
 
-  ngOnInit()
-  {
-    // ORIGINAL: this.fetchOutput();
-    //this.fetchOutput();
-    //this.getOutputInfoId();
-  }
+  ngOnInit() { }
 
   getOutputInfoId()
   {
@@ -93,14 +74,11 @@ export class CalcFormComponent implements OnInit
     return this.dataService.getOutputInfo().subscribe(data => this.outputInfos$ = data);
   }
 
-  // TEST
+  // DONE
   fetchOutputId()
   {
-    // let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    // this.detailId = id;
-
     return this.dataService.getOutputInfoId(this.fkeyId)
-    .subscribe(data => this.outputInfos$ = data);
+     .subscribe(data => this.outputInfos$ = data);
   }
 
   // DONE: Input binding validator stockRatio:cashRatio
@@ -108,14 +86,5 @@ export class CalcFormComponent implements OnInit
   {
     this.inputData.cashRatio = 100 - this.inputData.stockRatio;
   }
-
-  // getHero(): void {
-  //   const fkeyId = +this.route.snapshot.paramMap.get('fkeyId');
-  //   this.dataService.getOutputInfoId(fkeyId)
-  //     .subscribe(info => this.outputInfos$ = info);
-  // }
-
-  // TODO: Remove this. For Json String
-  // get diagnostic() { return JSON.stringify(this.inputData);}
 
 }
