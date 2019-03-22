@@ -1,47 +1,4 @@
-<!-- <p>
-  calc-form works!
-</p> -->
-
-<!-- TEST SINGLE OUTPUT -->
-<!-- TO-DO: Add [hidden]="!submitted" -->
-<!-- <div class="form-group">
-    <h2>Single Output</h2>
-  </div> -->
-  <!-- TO-DO: Add [hidden]="!submitted" -->
-  <!-- <div *ngFor='let outputInfor of outputInfoz' style="text-align:left">
-    <ul>
-      <li>
-        <p> -->
-          <!--TO-DO delete this when program is done -->
-          <!-- Id Form: {{ outputInfor.fkeyId}}
-          <br>
-          <b>Month</b>: {{ outputInfor.month}} <br>
-          <br>
-          <b>Beginning</b> <br>
-          Beginning Stock: {{ outputInfor.begStock }}<br>
-          Beginning Cash: {{ outputInfor.begCash }}<br>
-          Beginning Total: {{ outputInfor.begTot }}<br>
-          <br>
-          <b>Transaction</b><br>
-          Transaction Stock: {{ outputInfor.traStock }}<br>
-          Transaction Cash: {{ outputInfor.traCash }}<br>
-          Transaction Total: {{ outputInfor.traTot }}<br>
-          <br>
-          <b>Rebalance</b><br>
-          Stock: {{ outputInfor.rebStock }}<br>
-          Cash: {{ outputInfor.rebCash }}<br>
-          <br>
-          <b>Ending</b> <br>
-          Stock Amount: {{ outputInfor.endStock }} <br>
-          Cash Amount: {{ outputInfor.endCash }} <br>
-          Total Ending Amount: {{ outputInfor. endAmount }} <br>
-        </p>
-      </li>
-    </ul>
-  </div> -->
-
 <div class="container">
-  <!-- TO-DO: Add [hidden]="submitted" -->
   <div [hidden]="submitted">
   <h1>Calculator Form</h1>
 
@@ -66,7 +23,6 @@
         </div>
       </div>
 
-    <!-- value={{inputData.stockRatio}} -->
     <div class="form-group">
       <label for="cashRatio">Cash Ratio</label>
       <input type="number" class="form-control" id="cashRatio" required [(ngModel)]="inputData.cashRatio" readonly="true" name="cashRatio" #cashRatio="ngModel" placeholder="auto-generate">
@@ -80,7 +36,6 @@
       <select class="form-control" id="durationYear" required [(ngModel)]="inputData.durationYear" name="durationYear" #durationYear="ngModel">
       <option *ngFor="let durationYear of durationYears" [value]="durationYear">{{durationYear}}</option>
       </select>
-      <!-- <input type="text" class="form-control" id="durationYear" required> -->
     </div>
 
     <div class="form-group">
@@ -103,13 +58,9 @@
 
     <button type="button" class="btn btn-default" (click)="newCalc(); calcForm.reset()">New Form</button>
     
-    <!-- {{diagnostic}} -->
-
   </form>
 </div>
   
-<!-- <div> -->
-<!-- TO-DO: Add [hidden]="!submitted" -->
 <div class="form-group" [hidden]="!submitted">
   <h2>You submitted the following:</h2>
   <div class="row">
@@ -140,49 +91,36 @@
   <button class="btn btn-primary" (click)="submitted=false">Back</button>
 </div>
 
-<!-- TO-DO: Add [hidden]="!submitted" -->
 <div class="form-group" [hidden]="!submitted">
   <h2>Simulation Output</h2>
 </div>
 
-<!-- TEST Creating table -->
 <table class="simple-table" [hidden]="!submitted">
-    <tr>
-      <th rowspan="2">Month</th>
-      <th colspan="3">Begin</th>
-      <th colspan="3">Transaction</th>
-      <th colspan="3">Balance</th>
-      <th colspan="2">Rebalance</th>
-      <th colspan="3">Total</th>
-      <!-- <th>Begin Stock</th>
-      <th>Begin Cash</th>
-      <th>Begin Total</th>
-      <th>Trans. Stock</th>
-      <th>Trans. Cash</th>
-      <th>Trans. Total</th>
-      <th>Rebal. Stock</th>
-      <th>Rebal. Cash</th>
-      <th>Ending Stock</th>
-      <th>Ending Cash</th>
-      <th>Ending Total</th> -->
-    </tr>
-    <tr>
-        <th>Begin Stock</th>
-        <th>Begin Cash</th>
-        <th>Begin Total</th>
-        <th>Trans. Stock</th>
-        <th>Trans. Cash</th>
-        <th>Trans. Total</th>
-        <th>Bal. Stock</th>
-        <th>Bal. Cash</th>
-        <th>Bal. Total</th>
-        <th>Rebal. Stock</th>
-        <th>Rebal. Cash</th>
-        <th>Ending Stock</th>
-        <th>Ending Cash</th>
-        <th>Ending Total</th>
-    </tr>
-<tbody>
+  <tr>
+    <th rowspan="2">Month</th>
+    <th colspan="3">Begin</th>
+    <th colspan="3">Transaction</th>
+    <th colspan="3">Balance</th>
+    <th colspan="2">Rebalance</th>
+    <th colspan="3">Total</th>
+  </tr>
+  <tr>
+    <th>Begin Stock</th>
+    <th>Begin Cash</th>
+    <th>Begin Total</th>
+    <th>Trans. Stock</th>
+    <th>Trans. Cash</th>
+    <th>Trans. Total</th>
+    <th>Bal. Stock</th>
+    <th>Bal. Cash</th>
+    <th>Bal. Total</th>
+    <th>Rebal. Stock</th>
+    <th>Rebal. Cash</th>
+    <th>Ending Stock</th>
+    <th>Ending Cash</th>
+    <th>Ending Total</th>
+  </tr>
+  <tbody>
     <tr *ngFor='let outputInfo of outputData'>
       <td>
         <b>{{ outputInfo.month }}</b>
@@ -230,35 +168,5 @@
         <b>{{ outputInfo.endAmount | number }}</b>
       </td>
     </tr>
-</tbody>
+  </tbody>
 </table>
-
-<!-- TO-DO: Add [hidden]="!submitted" -->
-<!-- <div *ngFor='let outputInfo of outputData' style="text-align:left">
-  <ul>
-    <li>
-      <p>
-        <b>Month</b>: {{ outputInfo.month}} <br>
-        <br>
-        <b>Beginning</b> <br>
-        Beginning Stock: {{ outputInfo.begStock }}<br>
-        Beginning Cash: {{ outputInfo.begCash }}<br>
-        Beginning Total: {{ outputInfo.begTot }}<br>
-        <br>
-        <b>Transaction</b><br>
-        Transaction Stock: {{ outputInfo.traStock }}<br>
-        Transaction Cash: {{ outputInfo.traCash }}<br>
-        Transaction Total: {{ outputInfo.traTot }}<br>
-        <br>
-        <b>Rebalance</b><br>
-        Stock: {{ outputInfo.rebStock }}<br>
-        Cash: {{ outputInfo.rebCash }}<br>
-        <br>
-        <b>Ending</b> <br>
-        Stock Amount: {{ outputInfo.endStock }} <br>
-        Cash Amount: {{ outputInfo.endCash }} <br>
-        Total Ending Amount: {{ outputInfo. endAmount }} <br>
-      </p>
-    </li>
-  </ul>
-</div> -->

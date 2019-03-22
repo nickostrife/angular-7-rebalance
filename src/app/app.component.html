@@ -1,67 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <!-- <h1>
-    Welcome to {{ title }}!
-  </h1> -->
-  <img width="300" alt="Rebalance Logo" src="./assets/rebalance-logo.jpg">
-  <!-- <ul>
-    <li *ngFor="let calc of calcs">
-      {{ calc.startAmount }}
-    </li>
-  </ul> -->
-</div>
-
-<div style="text-align: center">
-  <a routerLink="/home">Home</a> <br>
-  <a routerLink="/calc-form">Calculator Form</a> <br>
-</div>
-
+<mat-toolbar>
+  <nav class="navbar-header">
+    <a [routerLink]="[ '/home' ]" class="menu-text">
+      <img width="70" alt="Logo" src="./assets/graph.png">Rebalance
+    </a>
+    <a [routerLink]="[ '/home' ]" class="menu-text">Home</a> 
+    <a [routerLink]="[ '/calc-form' ]" class="menu-text">Calculator</a>
+  </nav>
+</mat-toolbar>
 <router-outlet></router-outlet>
-<!-- <app-calc-form></app-calc-form> -->
-
-
-<!-- Content for HomePage -->
-<!-- <h3 style="text-align: center">Submitted Form List</h3>
-<div *ngFor='let inputData of inputDatas$' style="text-align:center">
-  <ul>
-      <li>
-    <p>
-    {{ inputData.id }}<br>
-    Starting Amount: {{ inputData.startAmount }}<br>
-    Duration Year(s): {{ inputData.durationYear }}<br>
-    Stock Ratio: {{ inputData.stockRatio }}%<br>
-    Cash Ratio: {{ inputData.cashRatio }}%
-    </p>
-    </li>
-  </ul>
-</div> -->
-
-<!-- <h3 style="text-align: center">Simulation Output</h3>
-<div *ngFor='let outputInfo of outputInfos$' style="text-align:center">
-  <ul>
-      <li>
-    <p>
-    {{ outputInfo.oid }}<br>
-    {{ outputInfo.fkeyId}}<br>
-    
-    Beginning <br>
-    Beginning Stock: {{ outputInfo.begStock }}<br>
-    Beginning Cash: {{ outputInfo.begCash }}<br>
-    Beginning Total: {{ outputInfo.begTot }}<br>
-    
-    Transaction<br>
-    Transaction Stock: {{ outputInfo.traStock }}<br>
-    Transaction Cash: {{ outputInfo.traCash }}<br>
-    Transaction Total: {{ outputInfo.traTot }}<br>
-
-    Rebalance<br>
-    Stock: {{ outputInfo.rebStock }}<br>
-    Cash: {{ outputInfo.rebCash }}<br>
-
-    Ending <br>
-    Stock Amount: {{ outputInfo.endStock }} <br>
-    Cash Amount: {{ outputInfo.endCash }} <br>
-    Total Ending Amount: {{ outputInfo. endAmount }} <br>
-    </li>
-  </ul>
-</div> -->

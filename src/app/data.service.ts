@@ -1,10 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InputData } from './inputdata.model';
 import { OutputInfo } from './outputinfo.model';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
+import { catchError, map} from 'rxjs/operators';
 
 const httpOptions =
   {
@@ -17,66 +16,67 @@ const httpOptions =
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService
 {
-  constructor(private _http: HttpClient
-    ) { } 
+  constructor(private _http: HttpClient) { } 
   
-  private getInputUrl = 'http://localhost:8080/get-input?id=';
-
-  private getOutputUrl = 'http://localhost:8080/get-single-output?fkeyId=';
-  
+  getInputUrl = 'http://localhost:8080/get-input?id=';
+  getOutputUrl = 'http://localhost:8080/get-single-output?fkeyId=';
   getApiURL = 'http://localhost:8080/get-input-all';
-
   getOutputApiURL = 'http://localhost:8080/get-output-all'
-
   postApiURL = 'http://localhost:8080/calculate'
 
-  
   /** GET ALL input datas from the server */
   getInputData(): Observable<InputData[]>
   {
-    return this._http.get<InputData[]>(this.getApiURL).pipe(catchError(this.handleError('getInputData',[]))
-    );
+    return this._http.get<InputData[]>(this.getApiURL)
+     .pipe(catchError(this.handleError('getInputData',[]))
+     );
   }
 
   /** GET input data by id. Will 404 if id not found */
   getInputDataId(id: number): Observable<InputData>
   {   
     const url = `${this.getInputUrl}${id}`;
-    return this._http.get<InputData>(url).pipe(catchError(this.handleError<InputData>(`getInputData id=${id}`))
-    );
+    return this._http.get<InputData>(url)
+     .pipe(catchError(this.handleError<InputData>(`getInputData id=${id}`))
+     );
   }
 
   /** GET All output data from server */
   getOutputInfo(): Observable<OutputInfo[]>
   {
-    return this._http.get<OutputInfo[]>(this.getOutputApiURL).pipe(catchError(this.handleError('getOutputInfo',[]))
-    );
+    return this._http.get<OutputInfo[]>(this.getOutputApiURL)
+     .pipe(catchError(this.handleError('getOutputInfo',[]))
+     );
   }
 
   /** GET SINGLE output data from server */
   getOutputInfoId(fkeyId: number): Observable<OutputInfo[]>
   {
     const url = `${this.getOutputUrl}${fkeyId}`
-    return this._http.get<OutputInfo[]>(url).pipe(catchError(this.handleError('getOutputInfoId',[]))
-    );
+    return this._http.get<OutputInfo[]>(url)
+     .pipe(catchError(this.handleError('getOutputInfoId',[]))
+     );
   }
 
   /** POST: input form data to server */
   postInputData(inputData: InputData)
   {
-    return this._http.post<InputData>(this.postApiURL, inputData, httpOptions).pipe(catchError(this.handleError('postInputData',[])
-    ));
+    return this._http.post<InputData>(this.postApiURL, inputData, httpOptions)
+     .pipe(catchError(this.handleError('postInputData',[]))
+     );
   }
 
-  // /** POST: add new input data to the server */
-  // postInputData(inputData : InputData): Observable<InputData>
-  //  {
-  //   return this._http.post<InputData>(this.postApiUrl, inputData, httpOptions).pipe(catchError(this.handleError<InputData>('postInputData'))
-  //   );
-  // }
-
+  /** TEST: GET SINGLE output to Map for chart.js purpose */
+  getChartInfo(fkeyId: number)
+  {
+    const url = `${this.getOutputUrl}${fkeyId}`
+    return this._http.get(url)
+    .pipe(map(result=>result),catchError(this.handleError('getChartInfor, []'))
+    );
+  }
 
   /**
   * Handle Http operation that failed.

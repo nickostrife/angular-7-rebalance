@@ -1,0 +1,21 @@
+.docs-navbar, app-navbar .docs-navbar-header, mat-toolbar {
+    background: #18a3ce;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: darkcyan;
+    background-size: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+    display: flex;
+}
+
+.menu-text 
+{
+    color: white;
+    padding: 6px 12px;
+}
